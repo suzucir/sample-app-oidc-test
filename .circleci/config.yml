@@ -16,8 +16,7 @@ jobs:
   deploy-to-s3:
     docker:
       - image: node:current-bullseye
-    environment:
-      # 
+    environment: # put your environment here
       AWS_DEFAULT_REGION: us-east-1
       AWS_ROLE_ARN: arn:aws:iam::833504075838:role/circleci-oidc
       S3_TARGET: s3://circleci-oidc-test

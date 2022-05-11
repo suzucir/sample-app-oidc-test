@@ -22,7 +22,7 @@ jobs:
       S3_TARGET: s3://circleci-oidc-test
     steps:
       - checkout
-      - install-awscli
+      # - install-awscli
       - run:
           name: update index.html
           command: |
@@ -37,7 +37,7 @@ jobs:
               export AWS_WEB_IDENTITY_TOKEN_FILE="$(mktemp -u)"
               # then, put the OIDC token into that file
               echo $CIRCLE_OIDC_TOKEN > "$AWS_WEB_IDENTITY_TOKEN_FILE"
-              # aws sts get-caller-identity
+              aws sts get-caller-identity
               aws s3 cp ./index.html $S3_TARGET
 
 workflows:
